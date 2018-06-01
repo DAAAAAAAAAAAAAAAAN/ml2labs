@@ -1,0 +1,128 @@
+\documentclass[a4paper]{article}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\input{head}
+\input{formulas.tex}
+\begin{document}
+
+%-------------------------------
+%   TITLE SECTION
+%-------------------------------
+
+\fancyhead[C]{}
+\hrule \medskip % Upper rule
+\begin{minipage}{0.295\textwidth}
+    \raggedright
+    \footnotesize
+    Cor Zuurmond \hfill\\
+    10580395 \hfill\\
+    jczuurmond@gmail.com
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+    \centering
+    \large
+    Homework Assignment 7\\
+    \normalsize
+    Machine Learning 2, 17/18\\
+\end{minipage}
+\begin{minipage}{0.295\textwidth}
+    \raggedleft
+    \today\hfill\\
+\end{minipage}
+\medskip\hrule
+\bigskip
+
+%-------------------------------
+%   CONTENTS
+%-------------------------------
+
+\begin{align*}
+    \label{eq:}
+    D_{KL}(q(\vz) \parallel p(\vz)) & = \int q(\vz)
+    \log\left(\frac{p(\vz)}{q(\vz)}\right) d\vz
+    \\
+    & = \int q(\vz) \log(p(\vz)) d\vz - \int q(\vz) \log(q(\vz)) d\vz 
+    \\
+    \int q(\vz) \log(p(\vz)) d\vz & = \int 
+    q(\vz)
+    \log\left(
+    \frac{1}{\sqrt{(2\pi)^K \mid \mI \mid }}
+    e^{-\frac{1}{2} \vz^T \mI^{-1} \vz)}
+    \right) d\vz
+    \\
+    & = -\log\left(\sqrt{(2\pi)^K \mid \mI \mid } \right) + \int q(\vz)
+    \left(-\frac{1}{2} \vz^T \mI^{-1} \vmu \right) d\vz 
+    \\
+    & = -\frac{K}{2} \log\left( 2\pi \right) - \frac{1}{2} \int
+    \vz^T \vz q(\vz) d\vz
+    \\
+    & = -\frac{K}{2} \log\left( 2\pi \right) - \frac{1}{2} \int
+    (\vz + \vmu)^T (\vz + \vmu) q(\vz + \vmu) d\vz
+    \\
+    & = -\frac{K}{2} \log\left( 2\pi \right) - \frac{1}{2} \int
+    (\vz^T \vz + \vz^T \vmu + \vmu^T \vz + \vmu^T \vmu)
+    q(\vz + \vmu) d\vz
+    \\
+    & = -\frac{K}{2} \log\left( 2\pi \right) - \frac{1}{2} \left(
+    \EE{q(\vz + \vmu)}{\vz^T \vz} + \EE{q(\vz + \vmu)}{\vz^T \vmu} +
+    \EE{q(\vz + \vmu)}{\vmu^T \vz} + \EE{q(\vz + \vmu)}{\vmu^T \vmu} \right)
+    \\
+    & = -\frac{K}{2} \log\left( 2\pi \right) - \frac{1}{2} \left(
+    \trace{\diag{\vsigma} } + \trace{\vmu^T \vmu} \right)
+    \\
+    & = -\frac{K}{2} \log\left( 2\pi \right) - \frac{1}{2}
+    \sumt{i=1}{K} \left( \vsigma_i^2 + \vmu_i^2 \right)
+    \\
+    \int q(\vz) \log(q(\vz)) d\vz & = \int 
+    q(\vz)
+    \log\left(
+    \frac{1}{\sqrt{(2\pi)^K \mid \diag{\vsigma} \mid }}
+    e^{-\frac{1}{2} (\vz - \vmu)^T (\diag{\vsigma} \cdot \diag{\vsigma})^{-1} (\vz - \vmu)}
+    \right) d\vz
+    \\ 
+    & = -\frac{K}{2} \log\left( 2\pi \right) -
+    \frac{K}{2} \log\left( \mid \diag{\vsigma} \cdot \diag{\vsigma} \mid \right) - \frac{1}{2} \int
+    (\vz - \vmu)^T (\diag{\vsigma} \cdot \diag{\vsigma})^{-1} (\vz
+    - \vmu) q(\vz) d\vz
+    \\
+    & = -\frac{K}{2} \log\left( 2\pi \right) -
+    \frac{K}{2} \sumt{i=1}{K}(\log(\vsigma_i^2)) - \frac{1}{2} \int
+    \vz^T (\diag{\vsigma} \cdot \diag{\vsigma})^{-1} \vz q(\vz + \vmu) d\vz
+    \\
+    & = -\frac{K}{2} \log\left( 2\pi \right) -
+    \frac{K}{2} \sumt{i=1}{K}(\log(\vsigma_i^2)) - 
+    \frac{1}{2} \EE{q(\vz + \vmu)}{\vz^T (\diag{\vsigma} \cdot
+    \diag{\vsigma})^{-1} \vz} 
+    \\
+    & = -\frac{K}{2} \log\left( 2\pi \right) -
+    \frac{K}{2} \sumt{i=1}{K}(\log(\vsigma_i^2)) - 
+    \frac{1}{2} \trace{\EE{q(\vz + \vmu)}{\vz^T (\diag{\vsigma} \cdot
+    \diag{\vsigma})^{-1} \vz} }
+    \\
+    & = -\frac{K}{2} \log\left( 2\pi \right) - 
+    \frac{K}{2} \sumt{i=1}{K}(\log(\vsigma_i^2)) - \frac{1}{2}
+    \trace{(\diag{\vsigma} \cdot \diag{\vsigma})^{-1} (\diag{\vsigma} \cdot
+    \diag{\vsigma})}
+    \\
+    & = -\frac{K}{2} \log\left( 2\pi \right) - 
+    \frac{K}{2} \sumt{i=1}{K}(\log(\vsigma_i^2)) - \frac{K}{2}
+    \\
+    & = -\frac{K}{2} \log\left( 2\pi \right) -
+    \frac{K}{2} \sumt{i=1}{K} (\log(\vsigma_i^2) + 1)
+    \\
+    D_{KL}(q(\vz) \parallel p(\vz)) & = 
+    \int q(\vz) \log(p(\vz)) d\vz - \int q(\vz) \log(q(\vz)) d\vz 
+    \\
+    & = -\frac{K}{2} \log\left( 2\pi \right) - \frac{1}{2}
+    \sumt{i=1}{K} \left( \vsigma_i^2 + \vmu_i^2 \right)
+    - \left(-\frac{K}{2} \log\left( 2\pi \right) -
+    \frac{K}{2} \sumt{i=1}{K} (\log(\vsigma_i^2) + 1) \right)
+    \\
+    & = \frac{1}{2} \sumt{i=1}{K} \left( \log(\vsigma_i^2) + 1 - \vsigma_i^2 - \vmu_i^2\right)
+\end{align*}
+
+
+\end{document}
+\grid

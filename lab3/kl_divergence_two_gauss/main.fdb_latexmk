@@ -1,9 +1,10 @@
 # Fdb version 3
-["biber main"] 1527864498 "main.bcf" "main.bbl" "main" 1527875095
-  "main.bcf" 1527875095 90216 dfaad2671fb473774eec588545229a80 ""
+["biber main"] 1527864498 "main.bcf" "main.bbl" "main" 1527934394
+  "main.bcf" 1527934393 90216 dfaad2671fb473774eec588545229a80 ""
   (generated)
   "main.bbl"
-["pdflatex"] 1527875094 "main.tex" "main.pdf" "main" 1527875095
+  "main.blg"
+["pdflatex"] 1527934392 "main.tex" "main.pdf" "main" 1527934394
   "/etc/texmf/web2c/texmf.cnf" 1523364942 1101 af7716885e081ab43982cab7b4672c1a ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
@@ -240,20 +241,20 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1503343927 31343 93828589fb0cea665e553ee5a17ad2d4 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1523364992 1863403 f3ff9a4253bcb5fb9a9baaf0c572cb01 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1523365027 3854425 d05c377fc90cff6075089997f9296658 ""
-  "formulas.tex" 1527866659 2324 7c1dc9f5c2a720e5bfab2c5c1c6495f8 ""
+  "formulas.tex" 1527875486 2324 7c1dc9f5c2a720e5bfab2c5c1c6495f8 ""
   "head.tex" 1527165951 2735 71a4ad11603d55149a2d5aabad1b9bb1 ""
-  "main.aux" 1527875095 1402 cbeb44eff50b8bae2829bf3c1e742a9b ""
+  "main.aux" 1527934393 1402 cbeb44eff50b8bae2829bf3c1e742a9b ""
   "main.bbl" 1527165951 466 5e94f251ea8a419bbae6173a1e9a9c1d "biber main"
-  "main.out" 1527875094 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "main.run.xml" 1527875095 2299 cac1250a182c2694afa213722c5b340f ""
-  "main.tex" 1527875094 4184 78bbe6c76e26d9b639140cb3fb3c4acf ""
+  "main.out" 1527934393 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "main.run.xml" 1527934393 2299 cac1250a182c2694afa213722c5b340f ""
+  "main.tex" 1527934391 4184 5ac5fde0cd54ff49750ab1acdb053d1b ""
   "style/avm.sty" 1527165951 5057 cec8bc669a9099a9976655c41e198f2d ""
   "style/btree.sty" 1527165951 4227 1f940af56ec4d6b13bc5f67ae255817c ""
   "style/lstlisting.sty" 1527165951 932 44fc7c305325b375fc1157a6ff8b063e ""
   (generated)
-  "main.run.xml"
-  "main.log"
-  "main.bcf"
-  "main.aux"
-  "main.pdf"
   "main.out"
+  "main.bcf"
+  "main.log"
+  "main.pdf"
+  "main.run.xml"
+  "main.aux"
